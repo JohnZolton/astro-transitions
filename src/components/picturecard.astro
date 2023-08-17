@@ -1,0 +1,15 @@
+---
+interface Props {
+	alttext: string;
+	link: string;
+	href:string;
+	animName:string;
+}
+
+const { link, alttext, href, animName } = Astro.props;
+---
+<a href={href}>
+
+	<img animate:name={animName} class="my-4" src={link} alt={alttext}>
+	</img>
+</a>

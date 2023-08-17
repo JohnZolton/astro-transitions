@@ -1,0 +1,21 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Card from '../components/Card.astro';
+import Picturecard from '../components/picturecard.astro';
+import {fade} from 'astro:transitions';
+
+---
+
+<Layout title="John Zolton">
+	<main class="text-white flex items-center flex-col" >
+		<h1 class="font-bold text-red-500">Welcome to <span class="text-gradient">Astro</span></h1>
+		<p>do that cool title card thing</p>
+		<div>
+		<Picturecard href='pic1' animName={"murph1"} transition:animate="morph"  alttext='murph' link='/img9.png'/>
+		<Picturecard href='pic2' animName={"murph2"} transition:animate="morph"  alttext='murphboat' link='/murph_boat.png'/>
+
+		</div>
+	</main>
+</Layout>
+
+
