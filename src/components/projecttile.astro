@@ -1,0 +1,121 @@
+---
+import { Github } from "lucide-astro";
+import { Star } from "lucide-astro";
+import { ArrowUpRight } from "lucide-astro";
+
+interface Props {
+  title: string;
+  description: string;
+  picture?: string;
+  url?: string;
+  repo?: string;
+  stars?: number;
+  forks?: number;
+  stack?: string;
+  hovered?: string;
+  page?: string;
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
+}
+
+const {
+  title,
+  description,
+  picture,
+  url,
+  repo,
+  stars,
+  forks,
+  stack,
+  hovered,
+  page,
+  onMouseEnter,
+  onMouseLeave,
+} = Astro.props;
+---
+
+<div class="">
+  <div
+    class={`my-1 w-full rounded-2xl border border-transparent bg-cyan-950  px-3 py-1 transition duration-300 ${
+      hovered ? (hovered === title ? "border-white" : "opacity-50") : ""
+    }`}
+  >
+    <div class="flex flex-col items-center sm:flex-row">
+      {
+        picture && (
+          <div
+            class={`h-28 w-44    ${
+              hovered === title ? "  brightness-125   " : ""
+            }`}
+          >
+            <img
+              class="h-full w-full object-fill"
+              src={`/${picture}`}
+              alt={title}
+              width={300}
+              height={200}
+            />
+          </div>
+        )
+      }
+      <div class="ml-3 w-full">
+        <div class="text-xl font-semibold">
+          {
+            page || url || repo ? (
+              <div class="flex flex-row items-center">
+                <div class="group-hover:underline">{title}</div>
+                <ArrowUpRight />
+              </div>
+            ) : (
+              <div class="flex items-center">
+                <div>{title}</div>
+              </div>
+            )
+          }
+        </div>
+        <div>
+          <div>{description}</div>
+        </div>
+        <div class="mt-1 flex flex-row items-center">
+          {(stars || forks) ?? <Github />}
+          {
+            stars ?? (
+              <div class="transtion flex flex-row items-center duration-300 hover:text-orange-300">
+                <div class="px-1 font-semibold">{stars}</div>
+                <Star />
+              </div>
+            )
+          }
+          {
+            forks && (
+              <div class="flex flex-row items-center transition duration-300 hover:text-blue-500">
+                <div class="px-1 font-semibold">{forks}</div>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-git-fork"
+                >
+                  <circle cx="6" cy="6" r="3" />
+                  <circle cx="18" cy="6" r="3" />
+                  <path d="M18 9v1a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V9" />
+                  <>
+                    <circle cx="12" cy="18" r="3" />
+                    <path d="M12 12v3" />
+                  </>
+                </svg>
+              </div>
+            )
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+  );
+</div>

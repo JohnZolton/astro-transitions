@@ -3,13 +3,13 @@ interface Props {
 	alttext: string;
 	link: string;
 	href:string;
-	animName:string;
+	transitionName: string;
 }
 
-const { link, alttext, href, animName } = Astro.props;
+const { link, alttext, href , transitionName } = Astro.props;
 ---
 <a href={href}>
 
-	<img animate:name={animName} class="my-4" src={link} alt={alttext}>
+	<img transition:name={transitionName} class="my-4" src={link} alt={alttext}>
 	</img>
 </a>
