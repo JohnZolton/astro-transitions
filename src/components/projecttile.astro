@@ -52,6 +52,7 @@ const stackItems = stack?.split(",");
             class="h-full w-full object-fill"
             src={`/${picture}`}
             alt={title}
+            transition:name={`${title}-picture`}
             width={300}
             height={200}
           />
@@ -59,13 +60,13 @@ const stackItems = stack?.split(",");
       )
     }
     <div class="ml-3 w-full">
-      <div class="text-xl font-semibold group ">
+      <div class="text-xl font-semibold group " transition:name={`${title}-title`}>
         {
           page || url || repo ? (
-            <div class="flex flex-row items-center group-hover:underline">
+            <a href={page || url || repo} class="flex flex-row items-center group-hover:underline">
               <div class="">{title}</div>
               <ArrowUpRight class="transform transition-all duration-200 group-hover:translate-x-1 group-hover:translate-y-[-1px] group-hover:scale-125" />
-            </div>
+            </a>
           ) : (
             <div class="flex items-center">
               <div>{title}</div>
