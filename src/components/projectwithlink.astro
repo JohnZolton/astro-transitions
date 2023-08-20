@@ -36,18 +36,37 @@ const {
 } = Astro.props;
 ---
 
-<div class="hover:border">
-  <a href={page} class="hover:border">
-    <Projecttile
-      title={title}
-      description={description}
-      picture={picture}
-      url={url}
-      repo={repo}
-      stars={stars}
-      forks={forks}
-      stack={stack}
-      page={page}
-    />
-  </a>
+<div class="">
+  {
+    page ? (
+      <a
+        href={page}
+        class=""
+      >
+        <Projecttile
+          title={title}
+          description={description}
+          picture={picture}
+          url={url}
+          repo={repo}
+          stars={stars}
+          forks={forks}
+          stack={stack}
+          page={page}
+        />
+      </a>
+    ) : (
+      <Projecttile
+        title={title}
+        description={description}
+        picture={picture}
+        url={url}
+        repo={repo}
+        stars={stars}
+        forks={forks}
+        stack={stack}
+        page={page}
+      />
+    )
+  }
 </div>
