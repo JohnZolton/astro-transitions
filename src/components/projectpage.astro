@@ -21,12 +21,12 @@ const {  title,
   paragraphs,} = Astro.props;
 ---
 <Layout title="Lyfter">
-<div class="flex flex-col items-center">
+<div class="flex flex-col items-center bg-cyan-950 rounded-2xl p-5"
+transition:name={`${title}-bg`}
+>
       <div transition:name={`${title}-title`} class="text-6xl font-semibold m-3">{title}</div>
       {picture && <img transition:name={`${title}-picture`} src={picture}/>}
 
-      {youtube && (
-      <div class="flex items-center">Youtube here</div>)}
       <div class="flex flex-row items-center gap-2">
 
       {url && (
@@ -64,7 +64,7 @@ const {  title,
         </a>
       )}
       </div>
-      <div class="w-1/2 pb-10">
+      <div class=" pb-10">
         {paragraphs &&
           paragraphs.map((paragraph, index) => (
             <div  class="my-2">{paragraph}</div>

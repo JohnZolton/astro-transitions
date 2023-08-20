@@ -3,33 +3,13 @@ import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
 import Picturecard from "../components/picturecard.astro";
 import { fade } from "astro:transitions";
-import Projecttile from "../components/projecttile.astro";
+import Project from "../components/projecttile.astro";
 import Projectwithlink from "../components/projectwithlink.astro";
-import { Github, Mail } from "lucide-astro";
+import { Github, ArrowRight, ArrowUpRight, Mail } from "lucide-astro";
 ---
 
 <Layout title="John Zolton">
-    <div
-      class="relative z-10 flex flex-col items-center lg:flex-row lg:items-start lg:justify-between"
-    >
-  <div class="h-full md:w-1/2 lg:sticky lg:top-0 lg:flex lg:flex-col lg:py-24">
-    <div class="pb-3 text-6xl font-semibold">John Zolton</div>
-    <div class="text-3xl">Software Engineer</div>
-
-    <div class="flex flex-row gap-3">
-      <Mail />
-      <Github />
-      <a
-        href="JohnZolton_Resume.pdf"
-        rel="noopener noreferrer"
-        target="_blank"
-        class="text-slate-300 hover:text-white text-lg hover:underline"
-      >
-        Resum&eacute;
-      </a>
-    </div>
-  </div>
-  <div class="text-white flex items-center flex-col">
+  <div class="text-white flex items-center flex-col max-w-2xl">
     <div class="flex flex-col gap-4 lg:py-8 text-lg pb-6">
       <div class="">
         It all started with degenerate crypto arbitrage bots. I instantly fell
@@ -43,18 +23,24 @@ import { Github, Mail } from "lucide-astro";
       </div>
       <div class="">
         When I&apos;m not at the computer or staring into the abyss, I&apos;m
-        usually hiking a trail with my dog,{" "}
-        <a
-          href="murph"
-          class="text-orange-300 hover:text-orange-200 hover:underline"
-        >
-          Murph
-        </a>
-        .
+        usually hiking a trail with my dog,
+        <span class="flex flex-row group">
+          <a
+            href="murph"
+            transition:name="murph"
+            class="text-orange-300 group-hover:text-orange-200 hover:underline"
+          >
+            Murph
+            <ArrowUpRight
+              class="inline-block group-hover:translate-x-1 group-hover:translate-y-[-1px] group-hover:scale-125group-hover:"
+            />
+          </a>
+          .
+        </span>
       </div>
     </div>
     <div>
-      <Projecttile
+      <Project
         title="Lyfter"
         description="Workout and exercise tracker with built in performance monitoring and program adjustment"
         picture="lyfter2.png"
@@ -65,7 +51,7 @@ import { Github, Mail } from "lucide-astro";
         stars={5}
         forks={6}
       />
-      <Projecttile
+      <Project
         title="MyFitnessBuddy"
         description="Nutrition and activity tracker packed with quality of life features like automatic step tracking and meal planning"
         picture="fitnesspal2.png"
@@ -74,7 +60,7 @@ import { Github, Mail } from "lucide-astro";
         url="https://nutritiontracker.bio/tracking/"
         stack="Django, Postgres, Stripe, USDA API, Smartwatch API"
       />
-      <Projecttile
+      <Project
         title="FreeBay"
         description="Online Auction platform featuring commenting on listings, watchlisting items, 2FA, and email and password resets"
         picture="freebay.png"
@@ -84,6 +70,48 @@ import { Github, Mail } from "lucide-astro";
         stack="Django, Postgres, AWS S3, Railway"
       />
     </div>
-  </div>
+    <a
+      href="projectarchive"
+      class="flex flex-row items-center text-2xl font-semibold group group-hover:underline"
+    >
+      <div transition:name="archive" class="group-hover:underline">
+        Project Archive
+      </div>
+      <ArrowRight
+        class="transform transition-all duration-200 group-hover:translate-x-1 group-hover:translate-y-[-1px] group-hover:scale-125"
+      />
+    </a>
+    <div>
+      <Project
+        title="Scribe"
+        description="Real time voice-to-text transcription using the open source AI model Whisper"
+        repo="https://github.com/JohnZolton/scribe"
+        stars={39}
+        forks={13}
+        stack="Python, Whisper"
+        outside={true}
+      />
+      <Project
+        title="AudioBooker"
+        description="PDF and text file to audio converter using the open source AI model Bark"
+        repo="https://github.com/JohnZolton/pdf-2-mp3"
+        stack="Python, Bark"
+        outside={true}
+      />
+      <Project
+        title="Floppy Bird"
+        description="A modern take on a timeless classic"
+        url="https://floppybirddemo.github.io/"
+        stack="JavaScript, HTML, CSS"
+        outside={true}
+      />
+      <Project
+        title="This Website"
+        description="A modern, aesthetic portfolio website"
+        repo="https://github.com/JohnZolton/blue-binary"
+        stack="Astro, React, TypeScript, Tailwind"
+        outside={true}
+      />
+    </div>
   </div>
 </Layout>

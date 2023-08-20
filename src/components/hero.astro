@@ -1,0 +1,24 @@
+---
+import { Mail, Github } from "lucide-astro";
+---
+  <div class="h-full md:w-1/2 lg:sticky lg:top-0 lg:flex lg:flex-col lg:py-24">
+    <div class="pb-3 text-6xl font-semibold">John Zolton</div>
+    <div class="text-3xl">Software Engineer</div>
+
+    <div class="flex flex-row gap-3">
+      <Mail />
+      <Github />
+      <a
+        href="JohnZolton_Resume.pdf"
+        rel="noopener noreferrer"
+        target="_blank"
+        class="hover:text-white text-lg hover:underline"
+      >
+        Resum&eacute;
+      </a>
+      <a
+        href="/"
+        class=" hover:text-white text-lg hover:underline"
+      >Home</a>
+    </div>
+  </div>
