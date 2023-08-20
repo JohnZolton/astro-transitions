@@ -1,0 +1,53 @@
+---
+import { Github } from "lucide-astro";
+import { Star } from "lucide-astro";
+import { ArrowUpRight } from "lucide-astro";
+import { GitFork } from "lucide-astro";
+import Projecttile from "./projecttile.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  picture?: string;
+  url?: string;
+  repo?: string;
+  stars?: number;
+  forks?: number;
+  stack?: string;
+  hovered?: string;
+  page?: string;
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
+}
+
+const {
+  title,
+  description,
+  picture,
+  url,
+  repo,
+  stars,
+  forks,
+  stack,
+  hovered,
+  page,
+  onMouseEnter,
+  onMouseLeave,
+} = Astro.props;
+---
+
+<div class="hover:border">
+  <a href={page} class="hover:border">
+    <Projecttile
+      title={title}
+      description={description}
+      picture={picture}
+      url={url}
+      repo={repo}
+      stars={stars}
+      forks={forks}
+      stack={stack}
+      page={page}
+    />
+  </a>
+</div>

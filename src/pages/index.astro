@@ -4,6 +4,7 @@ import Card from "../components/Card.astro";
 import Picturecard from "../components/picturecard.astro";
 import { fade } from "astro:transitions";
 import Projecttile from "../components/projecttile.astro";
+import Projectwithlink from "../components/projectwithlink.astro";
 ---
 
 <Layout title="John Zolton">
@@ -36,7 +37,7 @@ import Projecttile from "../components/projecttile.astro";
         />
       </div>
 
-      <Projecttile
+      <Projectwithlink
         title="Lyfter"
         description="Workout and exercise tracker with built in performance monitoring and program adjustment"
         picture="lyfter2.png"
@@ -44,6 +45,8 @@ import Projecttile from "../components/projecttile.astro";
         url="https://lyfter.vercel.app/"
         repo="https://github.com/JohnZolton/lyfter"
         stack="Next.js, TypeScript, React, tRPC, Prisma, Tailwind, Clerk"
+        stars={5}
+        forks={6}
       />
     </div>
   </div>

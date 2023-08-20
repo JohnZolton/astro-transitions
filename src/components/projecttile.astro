@@ -2,6 +2,7 @@
 import { Github } from "lucide-astro";
 import { Star } from "lucide-astro";
 import { ArrowUpRight } from "lucide-astro";
+import { GitFork } from "lucide-astro";
 
 interface Props {
   title: string;
@@ -32,9 +33,12 @@ const {
   onMouseEnter,
   onMouseLeave,
 } = Astro.props;
+
+const stackItems = stack?.split(",")
+
 ---
 
-<div class="">
+<div >
   <div
     class={`my-1 w-full rounded-2xl border border-transparent bg-cyan-950  px-3 py-1 transition duration-300 ${
       hovered ? (hovered === title ? "border-white" : "opacity-50") : ""
@@ -75,11 +79,20 @@ const {
         </div>
         <div>
           <div>{description}</div>
+              <div class="flex flex-row flex-wrap">
+      {stackItems?.map((item) => (
+        <div
+          class="m-0.5 truncate rounded-lg bg-pink-800 p-1 text-sm"
+        >
+          {item}
+        </div>
+      ))}
+    </div>
         </div>
         <div class="mt-1 flex flex-row items-center">
-          {(stars || forks) ?? <Github />}
+          {(stars || forks) && <Github />}
           {
-            stars ?? (
+            stars && (
               <div class="transtion flex flex-row items-center duration-300 hover:text-orange-300">
                 <div class="px-1 font-semibold">{stars}</div>
                 <Star />
@@ -90,26 +103,7 @@ const {
             forks && (
               <div class="flex flex-row items-center transition duration-300 hover:text-blue-500">
                 <div class="px-1 font-semibold">{forks}</div>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  class="lucide lucide-git-fork"
-                >
-                  <circle cx="6" cy="6" r="3" />
-                  <circle cx="18" cy="6" r="3" />
-                  <path d="M18 9v1a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V9" />
-                  <>
-                    <circle cx="12" cy="18" r="3" />
-                    <path d="M12 12v3" />
-                  </>
-                </svg>
+                <GitFork />
               </div>
             )
           }
@@ -117,5 +111,4 @@ const {
       </div>
     </div>
   </div>
-  );
 </div>
