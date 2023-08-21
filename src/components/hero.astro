@@ -1,24 +1,42 @@
 ---
 import { Mail, Github } from "lucide-astro";
 ---
-  <div class="h-full md:w-1/2 lg:sticky lg:top-0 lg:flex lg:flex-col lg:py-24">
-    <div class="pb-3 text-6xl font-semibold">John Zolton</div>
-    <div class="text-3xl">Software Engineer</div>
 
-    <div class="flex flex-row gap-3">
+<div
+  class="h-full md:w-1/2 lg:sticky lg:top-0 lg:flex lg:flex-col lg:py-24 mb-6"
+>
+  <div class="pb-3 text-6xl font-semibold">John Zolton</div>
+  <div class="text-3xl pb-3">Software Engineer</div>
+
+  <div class="flex flex-row gap-3 items-center">
+    <button class="clipboard-button hover:scale-110">
       <Mail />
+    </button>
+    <a
+      href="https://github.com/JohnZolton"
+      rel="noopener noreferrer"
+      target="_blank"
+      class="hover:scale-110"
+    >
+      <script>
+        const button = document.querySelector("button.clipboard-button");
+        button?.addEventListener("click", () => {
+          console.log("clicked")
+          navigator.clipboard
+            .writeText("jgz6@uakron.edu")
+            .then(() => alert("Email copied to clipboard!"))
+            .catch((error) => console.error("Copy failed", error));
+        });
+      </script>
       <Github />
-      <a
-        href="JohnZolton_Resume.pdf"
-        rel="noopener noreferrer"
-        target="_blank"
-        class="hover:text-white text-lg hover:underline"
-      >
-        Resum&eacute;
-      </a>
-      <a
-        href="/"
-        class=" hover:text-white text-lg hover:underline"
-      >Home</a>
-    </div>
+    </a>
+    <a
+      href="JohnZolton_Resume.pdf"
+      rel="noopener noreferrer"
+      target="_blank"
+      class="hover:text-white text-lg hover:underline"
+    >
+      Resum&eacute;
+    </a>
   </div>
+</div>
